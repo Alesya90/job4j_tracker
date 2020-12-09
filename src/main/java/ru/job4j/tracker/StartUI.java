@@ -26,5 +26,8 @@ public class StartUI {
         Item items2 = tracker.findById(2);
         System.out.println("result of findById: " + "name = " + items2.getName()
                 + ", id = " + items2.getId());
+
+        Item itemForToString = new Item(10, "For test of toString");
+        System.out.println(itemForToString);
     }
 }
