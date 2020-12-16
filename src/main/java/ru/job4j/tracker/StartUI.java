@@ -19,7 +19,7 @@ public class StartUI {
                 System.out.println("=== Show all items ====");
                 Item[] items = tracker.findAll();
                 for (int i = 0; i < items.length; i++) {
-                    System.out.println(items[i].getName());
+                    System.out.println(items[i]);
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit item ====");
@@ -28,8 +28,6 @@ public class StartUI {
                 System.out.print("Enter new item name: ");
                 String name = scanner.nextLine();
                 Item newItem = new Item(name);
-                //tracker.add(newItem);
-                tracker.replace(id, newItem);
                 if (tracker.replace(id, newItem)) {
                     System.out.println("Замена заявки произведена успешно");
                 } else {
@@ -39,8 +37,6 @@ public class StartUI {
                 System.out.println("=== Delete item ====");
                 System.out.print("Enter id of item: ");
                 int id = Integer.valueOf(scanner.nextLine());
-                //tracker.delete(id);
-                //System.out.println(tracker.delete(id));
                 if (tracker.delete(id)) {
                     System.out.println("Удаление заявки произведено успешно");
                 } else {
