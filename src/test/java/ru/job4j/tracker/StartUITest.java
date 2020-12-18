@@ -7,7 +7,57 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
-    @Test
+
+    @Test  //1
+    public void whenCreateItem() {
+        Input in = new StubInput(
+                new String[] {"0", "Item name", "1"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new CreateAction(),
+                new Exit()
+        };
+        new StartUI().init(in, tracker, actions);
+        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+    }
+
+    @Test //2
+    public void whenReplaceItem() {
+        Tracker tracker = new Tracker();
+        /* Добавим в tracker новую заявку */
+        Item item = tracker.add(new Item("Replaced item"));
+        /* Входные данные должны содержать ID добавленной заявки item.getId() */
+        String replacedName = "New item name";
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf((item.getId())), replacedName, "1"}
+        );
+        UserAction[] actions = {
+                new ReplaceItem(),
+                new Exit()
+        };
+        new StartUI().init(in, tracker, actions);
+        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
+    }
+
+    @Test //3
+    public void whenDeleteItem() {
+        Tracker tracker = new Tracker();
+        /* Добавим в tracker новую заявку */
+        Item item = tracker.add(new Item("Deleted item"));
+        /* Входные данные должны содержать ID добавленной заявки item.getId() */
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf((item.getId())), "1"}
+        );
+        UserAction[] actions = {
+                new DeleteItem(),
+                new Exit()
+        };
+        new StartUI().init(in, tracker, actions);
+        assertThat(tracker.findById(item.getId()), is(nullValue()));
+    }
+
+    /*@Test
     public void whenAddItem() {
         String[] answers = {"Fix PC"};
         Input input = new StubInput(answers);
@@ -52,5 +102,5 @@ public class StartUITest {
         StartUI.deleteItem(new StubInput(answers), tracker);
         Item delete = tracker.findById(item.getId());
         assertThat(delete, is(nullValue()));
-    }
+    }*/
 }
