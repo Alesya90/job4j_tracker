@@ -18,9 +18,9 @@ public class FindItemById implements UserAction {
         int id = Integer.valueOf(input.askStr("Enter id of item: "));
         Item foundItem = tracker.findById(id);
         if (foundItem != null) {
-            System.out.println(foundItem);
+            out.println(foundItem);
         } else {
-            System.out.println("Заявка с таким id не найдена");
+            out.println("Заявка с таким id не найдена");
         }
         return true;
     }

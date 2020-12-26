@@ -17,9 +17,9 @@ public class DeleteItem implements UserAction {
         out.println("=== Delete item ====");
         int id = Integer.valueOf(input.askStr("Enter id of item: "));
         if (tracker.delete(id)) {
-            System.out.println("Удаление заявки произведено успешно");
+           out.println("Удаление заявки произведено успешно");
         } else {
-            System.out.println("Ошибка! Индекс не найден! Заявка не удалена");
+            out.println("Ошибка! Индекс не найден! Заявка не удалена");
         }
         return true;
     }

@@ -19,9 +19,9 @@ public class ReplaceItem implements UserAction {
         String name = input.askStr("Enter new item name: ");
         Item newItem = new Item(name);
         if (tracker.replace(id, newItem)) {
-            System.out.println("Замена заявки произведена успешно");
+            out.println("Замена заявки произведена успешно");
         } else {
-            System.out.println("Ошибка! Индекс не найден! Заявка не заменена");
+            out.println("Ошибка! Индекс не найден! Заявка не заменена");
         }
         return true;
     }
