@@ -157,7 +157,7 @@ public class StartUITest {
         item1.setName("111");
         tracker.add(item1);
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(item1.getName()), "1"}
+                new String[] {"0", item1.getName(), "1"}
         );
 
         UserAction[] actions = {
