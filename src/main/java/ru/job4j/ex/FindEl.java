@@ -1,15 +1,16 @@
 package ru.job4j.ex;
 
 public class FindEl {
-    public static String indexOf(String[] value, String key) throws ElementNotFoundException {
-        String rsl = "-1";
-        for (String s : value) {
-            if (key.equals(s)) {
-                rsl = s;
+    public static int indexOf(String[] value, String key) throws ElementNotFoundException {
+        int rsl = -1;
+        for (int i = 0; i < value.length; i++) {
+            if (key.equals(value[i])) {
+                rsl = i;
                 break;
-            } else {
-                throw new ElementNotFoundException("Element could not be found");
             }
+        }
+        if (rsl == -1) {
+            throw new ElementNotFoundException("Element could not be found");
         }
         return rsl;
     }
