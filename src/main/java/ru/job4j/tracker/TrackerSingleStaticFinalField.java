@@ -1,21 +1,16 @@
 package ru.job4j.tracker;
 
 public class TrackerSingleStaticFinalField {
-    private static final TrackerSingleStaticFinalField INSTANCE =
-            new TrackerSingleStaticFinalField();
+    private static final Tracker INSTANCE = new Tracker();
 
     private TrackerSingleStaticFinalField() {
     }
 
-    public static TrackerSingleStaticFinalField getInstance() {
+    public static Tracker getInstance() {
         return INSTANCE;
     }
 
-    public Item add(Item model) {
-        return model;
-    }
-
     public static void main(String[] args) {
-        TrackerSingleStaticFinalField tracker = TrackerSingleStaticFinalField.getInstance();
+        Tracker tracker = TrackerSingleStaticFinalField.getInstance();
     }
 }

@@ -4,7 +4,7 @@ public class TrackerSinglePrivateStaticFinalClass {
     private TrackerSinglePrivateStaticFinalClass() {
     }
 
-    public static TrackerSinglePrivateStaticFinalClass getInstance() {
+    public static Tracker getInstance() {
         return Holder.INSTANCE;
     }
 
@@ -13,12 +13,8 @@ public class TrackerSinglePrivateStaticFinalClass {
     }
 
     private static final class Holder {
-        private static final TrackerSinglePrivateStaticFinalClass INSTANCE =
-                new TrackerSinglePrivateStaticFinalClass();
+        private static final Tracker INSTANCE =
+                new Tracker();
     }
 
-    public static void main(String[] args) {
-        TrackerSinglePrivateStaticFinalClass tracker =
-                TrackerSinglePrivateStaticFinalClass.getInstance();
-    }
 }
